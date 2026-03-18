@@ -184,7 +184,7 @@ signature = "2.2.0"
 socket2 = "0.6.3"
 subtle = "2.6.1"
 syn = "2.0"
-tempfile = "3.26.0"
+tempfile = "3.27.0"
 test-log = "0.2.19"
 thiserror = "2.0.18"
 tokio = { version = "1.50.0", features = ["full", "test-util"] }
