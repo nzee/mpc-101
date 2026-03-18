@@ -1,0 +1,9 @@
+target/
+libs/
+frontend/node_modules/
+frontend/dist/
+.git/
+pytest/
+tee_launcher/
+**/*.snap
+**/*.snap.new

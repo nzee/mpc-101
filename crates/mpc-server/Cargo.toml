@@ -1,0 +1,23 @@
+[package]
+name = "mpc-server"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "mpc-server"
+path = "src/main.rs"
+
+[dependencies]
+threshold-signatures = { path = "../threshold-signatures" }
+axum = { workspace = true }
+tokio = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+hex = { workspace = true }
+rand_core = { workspace = true, features = ["getrandom"] }
+sha2 = { workspace = true }
+tower-http = { version = "0.6", features = ["cors", "fs"] }
+
+[lints]
+workspace = true

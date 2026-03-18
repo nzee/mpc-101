@@ -5502,6 +5502,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "mpc-demo-cli"
+version = "3.7.0"
+dependencies = [
+ "clap",
+ "hex",
+ "rand_core 0.6.4",
+ "threshold-signatures",
+]
+
+[[package]]
 name = "mpc-devnet"
 version = "3.7.0"
 dependencies = [
@@ -5628,6 +5638,21 @@ dependencies = [
  "serde_json",
  "serde_with",
  "thiserror 2.0.18",
+]
+
+[[package]]
+name = "mpc-server"
+version = "3.7.0"
+dependencies = [
+ "axum",
+ "hex",
+ "rand_core 0.6.4",
+ "serde",
+ "serde_json",
+ "sha2",
+ "threshold-signatures",
+ "tokio",
+ "tower-http",
 ]
 
 [[package]]

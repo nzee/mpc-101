@@ -1,0 +1,18 @@
+[package]
+name = "mpc-demo-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "mpc-demo"
+path = "src/main.rs"
+
+[dependencies]
+threshold-signatures = { path = "../threshold-signatures" }
+clap = { workspace = true }
+hex = { workspace = true }
+rand_core = { workspace = true, features = ["getrandom"] }
+
+[lints]
+workspace = true
