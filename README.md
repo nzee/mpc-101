@@ -1,4 +1,61 @@
-# MPC
+# MPC-101 — FROST Threshold Signing Demo
+
+**Live demo:** [https://mpc-demo.fly.dev](https://mpc-demo.fly.dev)
+
+This repo is a fork of the [NEAR MPC node](https://github.com/near/mpc) that powers [Chain Signatures](https://docs.near.org/chain-abstraction/chain-signatures), extended with an interactive web demo that visualises how the underlying FROST threshold signature protocol actually works — step by step, with an ELI5 toggle for non-cryptographers.
+
+## What the demo shows
+
+The demo runs a full **2-of-3 FROST DKG + threshold Ed25519 signing** pipeline in your browser against a live Rust backend:
+
+1. **Distributed Key Generation** — 3 parties run the FROST DKG protocol over 5 rounds. Watch every message as it flows between nodes: hash commitments, Feldman VSS polynomial commitments, Schnorr proofs of knowledge, and Shamir share distribution. Secret shares are hidden behind a pulsing placeholder until the protocol completes — because they don't exist until then.
+
+2. **Threshold Signing** — Any 2 of the 3 parties co-sign a Solana SOL-transfer transaction. The protocol is FROST round-1 (nonce commitments) + round-2 (partial signatures → coordinator) + aggregation. The resulting signature is a standard Ed25519 signature, verifiable by any Ed25519 implementation.
+
+3. **Verification** — The final signature is verified against the joint public key produced by DKG, with a step-by-step walkthrough of the Ed25519 verification equation.
+
+**ELI5 toggle** — Every cryptographic concept has a plain-language equivalent. Toggle it in the top-right corner to switch between the full technical view (polynomial commitments, Lagrange coefficients, Fiat-Shamir challenges) and an accessible version using analogies (sealed envelopes, vault locks, shadow of an object).
+
+> **Note on the simulation:** All 3 parties run in the same Rust process on one server. The cryptographic protocol messages are identical to what a real distributed deployment would exchange — but network isolation is simulated. The NEAR MPC nodes this codebase is built for run each party on a separate TEE-secured machine with TLS-authenticated P2P transport.
+
+## Why Solana?
+
+The demo signs a Solana SOL transfer. Solana uses **Ed25519 natively**, which is the exact curve FROST EdDSA operates on. The produced signature is bit-for-bit compatible with what Solana's runtime would verify. (Ethereum uses secp256k1/ECDSA, which requires a different and more complex threshold protocol.)
+
+## Added crates
+
+| Crate | Purpose |
+|-------|---------|
+| `crates/mpc-server` | Axum HTTP server (port 3000): `/api/dkg`, `/api/sign`, `/api/verify`, `/api/state` |
+| `crates/mpc-demo-cli` | CLI version of the same DKG + signing flow |
+
+## Running locally
+
+```bash
+# Backend (port 3000)
+cargo run -p mpc-server
+
+# Frontend (port 5173) — in a separate terminal
+cd frontend && npm install && npm run dev -- --open
+```
+
+The frontend proxies `/api/*` to `localhost:3000`, so no CORS configuration needed.
+
+## Deploying
+
+The repo includes a multi-stage `Dockerfile` and `fly.toml`. The frontend is built and served as static files by the Axum backend — single binary, no separate static host needed.
+
+```bash
+fly deploy --remote-only
+```
+
+---
+
+*The rest of this README covers the original NEAR MPC node.*
+
+---
+
+# NEAR MPC Node
 
 This repository contains the code for the NEAR MPC node that powers [Chain Signatures](https://docs.near.org/chain-abstraction/chain-signatures).
 
