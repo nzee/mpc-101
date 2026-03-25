@@ -481,7 +481,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b28e6e86c6d2db52654b65a5a76b4f57eae5a32a7f0aa2222d1dbdb74e2cb8e0"
 dependencies = [
  "serde",
- "winnow",
+ "winnow 0.7.14",
 ]
 
 [[package]]
@@ -547,7 +547,22 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "43d5b281e737544384e969a5ccad3f1cdd24b48086a0fc1b2a5262a26b8f4f4a"
 dependencies = [
  "anstyle",
- "anstyle-parse",
+ "anstyle-parse 0.2.7",
+ "anstyle-query",
+ "anstyle-wincon",
+ "colorchoice",
+ "is_terminal_polyfill",
+ "utf8parse",
+]
+
+[[package]]
+name = "anstream"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "824a212faf96e9acacdbd09febd34438f8f711fb84e09a8916013cd7815ca28d"
+dependencies = [
+ "anstyle",
+ "anstyle-parse 1.0.0",
  "anstyle-query",
  "anstyle-wincon",
  "colorchoice",
@@ -566,6 +581,15 @@ name = "anstyle-parse"
 version = "0.2.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4e7644824f0aa2c7b9384579234ef10eb7efb6a0deb83f9630a49594dd9c15c2"
+dependencies = [
+ "utf8parse",
+]
+
+[[package]]
+name = "anstyle-parse"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "52ce7f38b242319f7cabaa6813055467063ecdc9d355bbb4ce0c68908cd8130e"
 dependencies = [
  "utf8parse",
 ]
@@ -1182,7 +1206,7 @@ dependencies = [
  "ed25519-dalek",
  "mpc-contract",
  "mpc-node",
- "near-account-id 2.5.0",
+ "near-account-id 2.6.0",
  "near-mpc-contract-interface",
  "rand 0.8.5",
  "rand_core 0.6.4",
@@ -1726,7 +1750,7 @@ dependencies = [
  "base64 0.22.1",
  "derive_more 2.1.1",
  "ed25519-dalek",
- "near-account-id 2.5.0",
+ "near-account-id 2.6.0",
  "near-async",
  "near-client",
  "near-crypto 2.11.0-rc.2",
@@ -1828,9 +1852,9 @@ dependencies = [
 
 [[package]]
 name = "clap"
-version = "4.5.60"
+version = "4.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2797f34da339ce31042b27d23607e051786132987f595b02ba4f6a6dffb7030a"
+checksum = "b193af5b67834b676abd72466a96c1024e6a6ad978a1f484bd90b85c94041351"
 dependencies = [
  "clap_builder",
  "clap_derive",
@@ -1838,11 +1862,11 @@ dependencies = [
 
 [[package]]
 name = "clap_builder"
-version = "4.5.60"
+version = "4.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "24a241312cea5059b13574bb9b3861cabf758b879c15190b37b6d6fd63ab6876"
+checksum = "714a53001bf66416adb0e2ef5ac857140e7dc3a0c48fb28b2f10762fc4b5069f"
 dependencies = [
- "anstream",
+ "anstream 1.0.0",
  "anstyle",
  "clap_lex",
  "strsim",
@@ -1850,9 +1874,9 @@ dependencies = [
 
 [[package]]
 name = "clap_derive"
-version = "4.5.55"
+version = "4.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a92793da1a46a5f2a02a6f4c46c6496b28c43638adea8306fcb0caa1634f24e5"
+checksum = "1110bd8a634a1ab8cb04345d8d878267d57c3cf1b38d91b71af6686408bbca6a"
 dependencies = [
  "heck 0.5.0",
  "proc-macro2",
@@ -3149,7 +3173,7 @@ version = "0.11.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b2daee4ea451f429a58296525ddf28b45a3b64f1acf6587e2067437bb11e218d"
 dependencies = [
- "anstream",
+ "anstream 0.6.21",
  "anstyle",
  "env_filter",
  "log",
@@ -4179,6 +4203,12 @@ dependencies = [
  "serde_json",
  "tokio",
 ]
+
+[[package]]
+name = "http-range-header"
+version = "0.4.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9171a2ea8a68358193d15dd5d70c1c10a2afc3e7e4c5bc92bc9f025cebd7359c"
 
 [[package]]
 name = "httparse"
@@ -5477,7 +5507,7 @@ dependencies = [
  "mpc-contract",
  "mpc-primitives",
  "near-abi",
- "near-account-id 2.5.0",
+ "near-account-id 2.6.0",
  "near-mpc-bounded-collections",
  "near-mpc-contract-interface",
  "near-mpc-sdk",
@@ -5524,7 +5554,7 @@ dependencies = [
  "futures",
  "hex",
  "mpc-contract",
- "near-account-id 2.5.0",
+ "near-account-id 2.6.0",
  "near-crypto 0.28.0",
  "near-jsonrpc-client 0.15.1",
  "near-jsonrpc-primitives 0.28.0",
@@ -5577,7 +5607,7 @@ dependencies = [
  "mpc-attestation",
  "mpc-contract",
  "mpc-tls",
- "near-account-id 2.5.0",
+ "near-account-id 2.6.0",
  "near-async",
  "near-client",
  "near-config-utils 2.11.0-rc.2",
@@ -5617,7 +5647,7 @@ dependencies = [
  "tokio-rustls",
  "tokio-stream",
  "tokio-util",
- "toml 1.0.6+spec-1.1.0",
+ "toml 1.1.0+spec-1.1.0",
  "tower",
  "tracing",
  "tracing-subscriber",
@@ -5781,9 +5811,9 @@ dependencies = [
 
 [[package]]
 name = "near-account-id"
-version = "2.5.0"
+version = "2.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "91f75ff8eee73815c247d0e17f3c0b705f0e993922a5548acd2ad377aeb67fca"
+checksum = "702dbca982e748975658812c7be2ca53211f454137486f98f6cf768934e2cb29"
 dependencies = [
  "borsh",
  "schemars 0.8.22",
@@ -6137,7 +6167,7 @@ dependencies = [
  "derive_more 2.1.1",
  "ed25519-dalek",
  "hex",
- "near-account-id 2.5.0",
+ "near-account-id 2.6.0",
  "near-config-utils 0.34.6",
  "near-schema-checker-lib 0.34.6",
  "near-stdx 0.34.6",
@@ -6162,7 +6192,7 @@ dependencies = [
  "derive_more 2.1.1",
  "ed25519-dalek",
  "hex",
- "near-account-id 2.5.0",
+ "near-account-id 2.6.0",
  "near-config-utils 2.11.0-rc.2",
  "near-schema-checker-lib 2.11.0-rc.2",
  "near-stdx 2.11.0-rc.2",
@@ -6452,7 +6482,7 @@ name = "near-mainnet-res"
 version = "2.11.0-rc.2"
 source = "git+https://github.com/near/nearcore?tag=2.11.0-rc.2#9d43667a71f64b7efa6c9f897eef61983d373977"
 dependencies = [
- "near-account-id 2.5.0",
+ "near-account-id 2.6.0",
  "near-chain-configs 2.11.0-rc.2",
  "near-primitives 2.11.0-rc.2",
  "serde_json",
@@ -6632,7 +6662,7 @@ checksum = "6e1dcbb5276d4c400cb8e897a34aa87d08e0ef05143d4f394ac70257fd066345"
 dependencies = [
  "borsh",
  "enum-map",
- "near-account-id 2.5.0",
+ "near-account-id 2.6.0",
  "near-primitives-core 0.34.6",
  "near-schema-checker-lib 0.34.6",
  "num-rational",
@@ -6650,7 +6680,7 @@ source = "git+https://github.com/near/nearcore?tag=2.11.0-rc.2#9d43667a71f64b7ef
 dependencies = [
  "borsh",
  "enum-map",
- "near-account-id 2.5.0",
+ "near-account-id 2.6.0",
  "near-primitives-core 2.11.0-rc.2",
  "near-schema-checker-lib 2.11.0-rc.2",
  "num-rational",
@@ -6833,7 +6863,7 @@ dependencies = [
  "bs58 0.4.0",
  "derive_more 2.1.1",
  "enum-map",
- "near-account-id 2.5.0",
+ "near-account-id 2.6.0",
  "near-gas",
  "near-schema-checker-lib 0.34.6",
  "near-token",
@@ -6856,7 +6886,7 @@ dependencies = [
  "bs58 0.4.0",
  "derive_more 2.1.1",
  "enum-map",
- "near-account-id 2.5.0",
+ "near-account-id 2.6.0",
  "near-gas",
  "near-schema-checker-lib 2.11.0-rc.2",
  "near-token",
@@ -6878,7 +6908,7 @@ dependencies = [
  "futures",
  "hex",
  "insta",
- "near-account-id 2.5.0",
+ "near-account-id 2.6.0",
  "near-async",
  "near-chain-configs 2.11.0-rc.2",
  "near-client",
@@ -6908,7 +6938,7 @@ dependencies = [
  "binary-install",
  "fs4",
  "json-patch 4.1.0",
- "near-account-id 2.5.0",
+ "near-account-id 2.6.0",
  "near-token",
  "serde",
  "serde_json",
@@ -6992,7 +7022,7 @@ dependencies = [
  "borsh",
  "bs58 0.5.1",
  "near-abi",
- "near-account-id 2.5.0",
+ "near-account-id 2.6.0",
  "near-crypto 0.34.6",
  "near-gas",
  "near-parameters 0.34.6",
@@ -7348,7 +7378,7 @@ dependencies = [
  "json-patch 2.0.0",
  "libc",
  "near-abi-client",
- "near-account-id 2.5.0",
+ "near-account-id 2.6.0",
  "near-crypto 0.34.6",
  "near-gas",
  "near-jsonrpc-client 0.20.0",
@@ -7644,9 +7674,9 @@ dependencies = [
 
 [[package]]
 name = "num_enum"
-version = "0.7.5"
+version = "0.7.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b1207a7e20ad57b847bbddc6776b968420d38292bbfe2089accff5e19e82454c"
+checksum = "5d0bca838442ec211fa11de3a8b0e0e8f3a4522575b5c4c06ed722e005036f26"
 dependencies = [
  "num_enum_derive",
  "rustversion",
@@ -7654,9 +7684,9 @@ dependencies = [
 
 [[package]]
 name = "num_enum_derive"
-version = "0.7.5"
+version = "0.7.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ff32365de1b6743cb203b710788263c44a03de03802daf96092f2da4fe6ba4d7"
+checksum = "680998035259dcfcafe653688bf2aa6d3e2dc05e98be6ab46afb089dc84f1df8"
 dependencies = [
  "proc-macro-crate",
  "proc-macro2",
@@ -10062,9 +10092,9 @@ dependencies = [
 
 [[package]]
 name = "serde_spanned"
-version = "1.0.4"
+version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f8bbf91e5a4d6315eee45e704372590b30e260ee83af6639d64557f51b067776"
+checksum = "876ac351060d4f882bb1032b6369eb0aef79ad9df1ea8bc404874d8cc3d0cd98"
 dependencies = [
  "serde_core",
 ]
@@ -10683,9 +10713,9 @@ dependencies = [
 
 [[package]]
 name = "tempfile"
-version = "3.26.0"
+version = "3.27.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "82a72c767771b47409d2345987fda8628641887d5466101319899796367354a0"
+checksum = "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
 dependencies = [
  "fastrand",
  "getrandom 0.4.1",
@@ -11078,17 +11108,17 @@ dependencies = [
 
 [[package]]
 name = "toml"
-version = "1.0.6+spec-1.1.0"
+version = "1.1.0+spec-1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "399b1124a3c9e16766831c6bba21e50192572cdd98706ea114f9502509686ffc"
+checksum = "f8195ca05e4eb728f4ba94f3e3291661320af739c4e43779cbdfae82ab239fcc"
 dependencies = [
  "indexmap 2.13.0",
  "serde_core",
- "serde_spanned 1.0.4",
- "toml_datetime 1.0.0+spec-1.1.0",
+ "serde_spanned 1.1.0",
+ "toml_datetime 1.1.0+spec-1.1.0",
  "toml_parser",
  "toml_writer",
- "winnow",
+ "winnow 1.0.0",
 ]
 
 [[package]]
@@ -11111,9 +11141,9 @@ dependencies = [
 
 [[package]]
 name = "toml_datetime"
-version = "1.0.0+spec-1.1.0"
+version = "1.1.0+spec-1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "32c2555c699578a4f59f0cc68e5116c8d7cabbd45e1409b989d4be085b53f13e"
+checksum = "97251a7c317e03ad83774a8752a7e81fb6067740609f75ea2b585b569a59198f"
 dependencies = [
  "serde_core",
 ]
@@ -11129,7 +11159,7 @@ dependencies = [
  "serde_spanned 0.6.9",
  "toml_datetime 0.6.11",
  "toml_write",
- "winnow",
+ "winnow 0.7.14",
 ]
 
 [[package]]
@@ -11141,16 +11171,16 @@ dependencies = [
  "indexmap 2.13.0",
  "toml_datetime 0.7.5+spec-1.1.0",
  "toml_parser",
- "winnow",
+ "winnow 0.7.14",
 ]
 
 [[package]]
 name = "toml_parser"
-version = "1.0.9+spec-1.1.0"
+version = "1.1.0+spec-1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "702d4415e08923e7e1ef96cd5727c0dfed80b4d2fa25db9647fe5eb6f7c5a4c4"
+checksum = "2334f11ee363607eb04df9b8fc8a13ca1715a72ba8662a26ac285c98aabb4011"
 dependencies = [
- "winnow",
+ "winnow 1.0.0",
 ]
 
 [[package]]
@@ -11161,9 +11191,9 @@ checksum = "5d99f8c9a7727884afe522e9bd5edbfc91a3312b36a77b5fb8926e4c31a41801"
 
 [[package]]
 name = "toml_writer"
-version = "1.0.6+spec-1.1.0"
+version = "1.1.0+spec-1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ab16f14aed21ee8bfd8ec22513f7287cd4a91aa92e44edfe2c17ddd004e92607"
+checksum = "d282ade6016312faf3e41e57ebbba0c073e4056dab1232ab1cb624199648f8ed"
 
 [[package]]
 name = "tonic"
@@ -11266,7 +11296,12 @@ dependencies = [
  "http 1.4.0",
  "http-body 1.0.1",
  "http-body-util",
+ "http-range-header",
+ "httpdate",
  "iri-string",
+ "mime",
+ "mime_guess",
+ "percent-encoding",
  "pin-project-lite",
  "tokio",
  "tokio-util",
@@ -11374,9 +11409,9 @@ dependencies = [
 
 [[package]]
 name = "tracing-subscriber"
-version = "0.3.22"
+version = "0.3.23"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2f30143827ddab0d256fd843b7a66d164e9f271cfa0dde49142c5ca0ca291f1e"
+checksum = "cb7f578e5945fb242538965c2d0b04418d38ec25c79d160cd279bf0731c8d319"
 dependencies = [
  "matchers",
  "nu-ansi-term",
@@ -11590,7 +11625,7 @@ name = "utilities"
 version = "3.7.0"
 dependencies = [
  "near-account-id 1.1.4",
- "near-account-id 2.5.0",
+ "near-account-id 2.6.0",
 ]
 
 [[package]]
@@ -12700,6 +12735,12 @@ checksum = "5a5364e9d77fcdeeaa6062ced926ee3381faa2ee02d3eb83a5c27a8825540829"
 dependencies = [
  "memchr",
 ]
+
+[[package]]
+name = "winnow"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a90e88e4667264a994d34e6d1ab2d26d398dcdca8b7f52bec8668957517fc7d8"
 
 [[package]]
 name = "winreg"
